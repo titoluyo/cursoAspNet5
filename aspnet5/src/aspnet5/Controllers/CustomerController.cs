@@ -15,7 +15,7 @@ namespace aspnet5.Controllers
         {
             Cliente item = null;
             string mensaje = $"Hello world {DateTime.Now}, qué es de la vida de {item?.Nombre?.ToUpper()}";
-            return "Hello World";
+            return mensaje;
         }
 
 
