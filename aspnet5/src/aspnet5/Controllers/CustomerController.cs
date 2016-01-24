@@ -1,21 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using aspnet5.Models;
 using Microsoft.AspNet.Mvc;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace aspnet5.Controllers
 {
     public class CustomerController : Controller
     {
+        public IActionResult Index()
+        {
+            var model = new CustomerRepository().GetList();
+            return View(model);
+        }
         // GET: /<controller>/
-        public string Index()
+        public string Sample()
         {
             Cliente item = null;
             string mensaje = $"Hello world {DateTime.Now}, qué es de la vida de {item?.Nombre?.ToUpper()}";
             return mensaje;
+        }
+
+        public IActionResult New(int id)
+        {
+            return View();
         }
 
 

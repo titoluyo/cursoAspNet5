@@ -1,0 +1,25 @@
+﻿@model IEnumerable<aspnet5.ViewModels.Customers.CustomerViewModel>
+
+<h1>Consulta de clientes</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Ruc)</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.IsEnabled)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Ruc</td>
+            <td>@item.Name</td>
+            <td>@Html.DisplayFor(m => item.Email)</td>
+            <td>@Html.DisplayFor(m => item.IsEnabled)</td>
+        </tr>
+    }
+    </tbody>
+</table>

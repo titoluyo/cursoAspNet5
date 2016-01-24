@@ -105,12 +105,17 @@ namespace aspnet5
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "MugPeru",
+                    template: "mugperu/{action=Index}",
+                    defaults: new { controller = "Customer"}
+                    );
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
 
         // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args); // <<== Nuevo 2015 metodos con exp. lambda
     }
 }
