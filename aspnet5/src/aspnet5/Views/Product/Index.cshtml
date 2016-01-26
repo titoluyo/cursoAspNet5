@@ -1,23 +1,55 @@
-﻿<h1>Consulta de catálogo de productos</h1>
-<fieldset>
-    <legend>Filtro de productos</legend>
-    <label>Nombre del producto</label>
-    <input type="text" id="FiltroProducto" ng-model="valorFiltro"/>
-</fieldset>
-<h2>{{ valorFiltro }}</h2>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Descripción</th>
-        <th>Precio Unitario</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
+﻿@section scripts{
+    <script src="~/js/app/app.js" ></script>
+    <script src="~/js/app/product/product.js" ></script>
+}
+<div ng-controller="productController">
+
+    <h1>Consulta de catálogo de productos</h1>
+    <p ng-hide="estadoNuevo">
+        <a href="javascript:;" ng-click="changeStatus()" class="btn btn-primary">Agregar Producto</a>
+    </p>
+    <form name="formNewProduct" ng-show="estadoNuevo">
+        <div>
+            <label>Código:</label>
+            <input type="text" class="form-control" ng-model="newProduct.Id" required/>
+        </div>
+        <div>
+            <label>Descripción:</label>
+            <input type="text" class="form-control" ng-model="newProduct.Description" required/>
+        </div>
+        <div>
+            <label>Precio Unitario:</label>
+            <input type="text" class="form-control" ng-model="newProduct.UnitPrice" required/>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" ng-click="create()">Registrar</button>
+            <button type="button" class="btn btn-primary" ng-click="changeStatus()">Cancelar</button>
+        </div>
+    </form>
+
+    <br/>
+
+    <fieldset>
+        <legend>Filtro de productos</legend>
+        <label>Nombre del producto</label>
+        <input type="text" id="FiltroProducto" ng-model="filtroProductos" />
+    </fieldset>
+    <h2>{{ filtroProductos }}</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+                <th>Precio Unitario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in products">
+                <td>{{ product.Id }}</td>
+                <td>{{ product.Description }}</td>
+                <td>{{ product.UnitPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
